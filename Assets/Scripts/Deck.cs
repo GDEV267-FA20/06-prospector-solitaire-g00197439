@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
+    [Header("Set in Inspector")]
+    public Sprite suitClub;
+    public Sprite suitDiamond;
+    public Sprite suitHeart;
+    public Sprite suitSpade;
+
+    public Sprite[] faceSprites;
+    public Sprite[] rankSprites;
+
+    public Sprite cardBack;
+    public Sprite cardBackGold;
+    public Sprite cardFront;
+    public Sprite cardFrontGold;
+
+    // Prefabs
+    public GameObject prefabCard;
+    public GameObject prefabSprite;
+
     [Header("Set Dyncamically")]
     public PT_XMLReader xmlr;
     public List<string> cardNames;
@@ -64,7 +82,7 @@ public class Deck : MonoBehaviour
             // For each of the <card>s, create a new CardDefinition
             CardDefinition cDef = new CardDefinition();
             // Parse the attribute values and add them to cDef
-            cDef.rank - int.Parse(xCardDefs[i].att("rank"));
+            cDef.rank = int.Parse(xCardDefs[i].att("rank"));
             // Grab a PT_XMLHashList of all the <pip>s on this <card>
             PT_XMLHashList xPips = xCardDefs[i]["pip"];
             if (xPips != null)
