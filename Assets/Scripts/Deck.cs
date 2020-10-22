@@ -16,12 +16,10 @@ public class Deck : MonoBehaviour
     public Sprite[] rankSprites;
 
     public Sprite cardBack;
-    public Sprite cardBackGold;
     public Sprite cardFront;
-    public Sprite cardFrontGold;
 
     // Prefabs
-    public GameObject prefabCard;
+    public GameObject[] prefabCard;
     public GameObject prefabSprite;
 
     [Header("Set Dyncamically")]
@@ -168,15 +166,20 @@ public class Deck : MonoBehaviour
         // Iterate through all of the card names that were just made
         for(int i = 0; i < cardNames.Count; i++)
         {
-            // Make the card and add it to the cards Deck
-            cards.Add(MakeCard(i));
+            if(i <= 12 || i >= 39)
+            {
+                cards.Add(MakeCardBlack(i));
+            } else
+            {
+                cards.Add(MakeCardRed(i));
+            }
         }
     }
 
-    public Card MakeCard(int cNum)
+    public Card MakeCardBlack(int cNum)
     {
         // Create a new Card GameObject
-        GameObject cgo = Instantiate(prefabCard) as GameObject;
+        GameObject cgo = Instantiate(prefabCard[0]) as GameObject;
         // Set the transform.parent of the new card to the anchor.
         cgo.transform.parent = deckAnchor;
         Card card = cgo.GetComponent<Card>(); // Get the Card Component
@@ -188,11 +191,36 @@ public class Deck : MonoBehaviour
         card.name = cardNames[cNum];
         card.suit = card.name[0].ToString();
         card.rank = int.Parse(card.name.Substring(1));
-        if (card.suit == "D" || card.suit == "H")
-        {
-            card.colS = "Red";
-            card.color = Color.red;
-        }
+        card.color = Color.white;
+
+        // Pull the CardDefinition for this card
+        card.def = GetCardDefinitionByRank(card.rank);
+
+        AddDecorators(card);
+        AddPips(card);
+        AddFace(card);
+        AddBack(card);
+
+        return card;
+    }
+
+    public Card MakeCardRed(int cNum)
+    {
+        // Create a new Card GameObject
+        GameObject cgo = Instantiate(prefabCard[1]) as GameObject;
+        // Set the transform.parent of the new card to the anchor.
+        cgo.transform.parent = deckAnchor;
+        Card card = cgo.GetComponent<Card>(); // Get the Card Component
+
+        // This line stacks the cards so that they're all in nice rows
+        cgo.transform.localPosition = new Vector3((cNum % 13) * 3, cNum / 13 * 4, 0);
+
+        // Assign basic values to the Card
+        card.name = cardNames[cNum];
+        card.suit = card.name[0].ToString();
+        card.rank = int.Parse(card.name.Substring(1));
+        card.color = Color.white;
+        card.colS = "Red";
         // Pull the CardDefinition for this card
         card.def = GetCardDefinitionByRank(card.rank);
 

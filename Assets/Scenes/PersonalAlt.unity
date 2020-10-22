@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startFaceUp: 1
-  suitClub: {fileID: 21300000, guid: f2e3abd22e9ae4d17ab5c0659ff3e024, type: 3}
-  suitDiamond: {fileID: 21300000, guid: f8c2745f3b53149c595d8fde43185468, type: 3}
-  suitHeart: {fileID: 21300000, guid: 3f3ffa8970b63467cad6ba98725b1c95, type: 3}
-  suitSpade: {fileID: 21300000, guid: a7994da692eef4500be008b80674eecb, type: 3}
+  suitClub: {fileID: 21300000, guid: 84126f0f23ed578419f72221c2da7e73, type: 3}
+  suitDiamond: {fileID: 21300000, guid: 039a2f3cf7b06554e9db0759e8cf7756, type: 3}
+  suitHeart: {fileID: 21300000, guid: 807fbc0563539e5439098794b39af266, type: 3}
+  suitSpade: {fileID: 21300000, guid: ac0853ba85758da45ae3ce0aa977fcff, type: 3}
   faceSprites:
   - {fileID: 21300000, guid: 0044ad2d99ea04858a663c3491cc9a91, type: 3}
   - {fileID: 21300000, guid: c10418368653749f796f63e87cde78ec, type: 3}
@@ -207,11 +207,11 @@ MonoBehaviour:
   - {fileID: -2704611688130657760, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: -6329860329445972959, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: 8997811152243715195, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
-  cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
-  cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
-  cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
-  prefabCard: {fileID: 4510610606751168941, guid: 6e558787aa941064c988e1ba1bdc37b5, type: 3}
+  cardBack: {fileID: 21300000, guid: 8b61a738644b71c4998a96dee446bc2e, type: 3}
+  cardFront: {fileID: 21300000, guid: 1670bb0eea593744caf19c8266adda80, type: 3}
+  prefabCard:
+  - {fileID: 6384547749433053216, guid: 91cb0d578b746854191bfe6d6e70a077, type: 3}
+  - {fileID: 3930737654999967697, guid: 0eb45b8f10d4ccb4484f584635e214fa, type: 3}
   prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62, type: 3}
   xmlr:
     xmlText: 
