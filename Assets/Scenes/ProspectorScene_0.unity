@@ -177,6 +177,11 @@ MonoBehaviour:
   suitDiamond: {fileID: 21300000, guid: f8c2745f3b53149c595d8fde43185468, type: 3}
   suitHeart: {fileID: 21300000, guid: 3f3ffa8970b63467cad6ba98725b1c95, type: 3}
   suitSpade: {fileID: 21300000, guid: a7994da692eef4500be008b80674eecb, type: 3}
+  altCardLayout: 0
+  altSuitClub: {fileID: 21300000, guid: 84126f0f23ed578419f72221c2da7e73, type: 3}
+  altSuitDiamond: {fileID: 21300000, guid: 039a2f3cf7b06554e9db0759e8cf7756, type: 3}
+  altSuitHeart: {fileID: 21300000, guid: 807fbc0563539e5439098794b39af266, type: 3}
+  altSuitSpade: {fileID: 21300000, guid: ac0853ba85758da45ae3ce0aa977fcff, type: 3}
   faceSprites:
   - {fileID: 21300000, guid: 0044ad2d99ea04858a663c3491cc9a91, type: 3}
   - {fileID: 21300000, guid: c10418368653749f796f63e87cde78ec, type: 3}
@@ -208,9 +213,7 @@ MonoBehaviour:
   - {fileID: -6329860329445972959, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: 8997811152243715195, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
-  cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
-  cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
   prefabCard: {fileID: 4510610606751168941, guid: 6e558787aa941064c988e1ba1bdc37b5, type: 3}
   prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62, type: 3}
   xmlr:
@@ -360,5 +363,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35fd6988722b2c40b65ef3fd6214c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
+  deckXML: {fileID: 4900000, guid: 2e182ac3424c2d04db51ac216e1829d4, type: 3}
   deck: {fileID: 0}

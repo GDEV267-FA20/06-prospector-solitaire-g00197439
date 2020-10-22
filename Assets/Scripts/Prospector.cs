@@ -10,6 +10,7 @@ public class Prospector : MonoBehaviour
 
     [Header("Set in Inspector")]
     public TextAsset deckXML;
+    public TextAsset alternateXML;
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -22,7 +23,13 @@ public class Prospector : MonoBehaviour
     void Start()
     {
         deck = GetComponent<Deck>(); // Get the Deck
-        deck.InitDeck(deckXML.text); // Pass DeckXML to it
+        if(deck.altCardLayout)
+        {
+            deck.InitDeck(alternateXML.text);
+        } else
+        {
+            deck.InitDeck(deckXML.text); // Pass DeckXML to it
+        }
         Deck.Shuffle(ref deck.cards); // This shuffles the deck by reference
 
         Card c;
