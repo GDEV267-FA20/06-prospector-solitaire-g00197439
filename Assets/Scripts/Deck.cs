@@ -23,7 +23,11 @@ public class Deck : MonoBehaviour
     public Sprite[] rankSprites;
 
     public Sprite cardBack;
+    public Sprite goldCardBack;
+    public Sprite altCardBack;
     public Sprite cardFront;
+    public Sprite goldCardFront;
+    public Sprite altCardFront;
 
     // Prefabs
     public GameObject prefabCard;
@@ -364,7 +368,13 @@ public class Deck : MonoBehaviour
         // The Card_Back will be able to cover everything else on the card
         tGO = Instantiate(prefabSprite) as GameObject;
         tSR = tGO.GetComponent<SpriteRenderer>();
-        tSR.sprite = cardBack;
+        if(!altCardLayout)
+        {
+            tSR.sprite = cardBack;
+        } else
+        {
+            tSR.sprite = altCardBack;
+        }
         tGO.transform.SetParent(card.transform);
         tGO.transform.localPosition = Vector3.zero;
         // This is a higher sortingOrder than anything else
