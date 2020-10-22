@@ -7,7 +7,7 @@ public class Card : MonoBehaviour
     [Header("Set Dyncamically")]
     public string suit; // Suit of the Card (C, D, H, or S)
     public int rank; // Rank of the Card (1-14)
-    public Color color = Color.white; // Color to tint pips
+    public Color color = Color.black; // Color to tint pips
     public string colS = "Black"; // or "Red". Name of the Color
 
     // This List holds all of the Decorator GameObjects
