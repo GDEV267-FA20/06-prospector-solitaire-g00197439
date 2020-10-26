@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 827460509}
   - component: {fileID: 827460514}
   - component: {fileID: 827460511}
+  - component: {fileID: 827460515}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -177,7 +178,7 @@ MonoBehaviour:
   suitDiamond: {fileID: 21300000, guid: f8c2745f3b53149c595d8fde43185468, type: 3}
   suitHeart: {fileID: 21300000, guid: 3f3ffa8970b63467cad6ba98725b1c95, type: 3}
   suitSpade: {fileID: 21300000, guid: a7994da692eef4500be008b80674eecb, type: 3}
-  altCardLayout: 1
+  altCardLayout: 0
   altSuitClub: {fileID: 21300000, guid: 84126f0f23ed578419f72221c2da7e73, type: 3}
   altSuitDiamond: {fileID: 21300000, guid: 039a2f3cf7b06554e9db0759e8cf7756, type: 3}
   altSuitHeart: {fileID: 21300000, guid: 807fbc0563539e5439098794b39af266, type: 3}
@@ -369,4 +370,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
   alternateXML: {fileID: 4900000, guid: 2e182ac3424c2d04db51ac216e1829d4, type: 3}
+  layoutXML: {fileID: 4900000, guid: 61f3f05951a2f4d98b35bddbc7549908, type: 3}
   deck: {fileID: 0}
+  layout: {fileID: 0}
+--- !u!114 &827460515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827460508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee939728ca5fe324b9527bb12bd80531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xmlr:
+    xmlText: 
+  multiplier: {x: 0, y: 0}
+  slotDefs: []
+  drawPile:
+    x: 0
+    y: 0
+    faceUp: 0
+    layerName: Default
+    layerID: 0
+    id: 0
+    hiddenBy: 
+    type: slot
+    stagger: {x: 0, y: 0}
+  discardPile:
+    x: 0
+    y: 0
+    faceUp: 0
+    layerName: Default
+    layerID: 0
+    id: 0
+    hiddenBy: 
+    type: slot
+    stagger: {x: 0, y: 0}
+  sortingLayerNames:
+  - Row0
+  - Row1
+  - Row2
+  - Row3
+  - Discard
+  - Draw
