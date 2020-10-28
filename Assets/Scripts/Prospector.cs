@@ -218,6 +218,7 @@ public class Prospector : MonoBehaviour
     // CardClicked is called any time a card in the game is clicked
     public void CardClicked(CardProspector cd)
     {
+        
         // The reaction is determined by the state of the clicked card
         switch(cd.state)
         {
@@ -238,6 +239,10 @@ public class Prospector : MonoBehaviour
                 if(!cd.faceUp)
                 {
                     // If the card is face-down, it's not valid
+                    validMatch = false;
+                }
+                if(!AdjacentRank(cd, target))
+                {
                     validMatch = false;
                 }
                 if (!validMatch) return; // return if not valid
