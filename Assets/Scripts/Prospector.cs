@@ -101,11 +101,54 @@ public class Prospector : MonoBehaviour
             tableau.Add(cp); // Add this CardProspector to the List<> tableau
         }
 
+        // Set which cards are hiding others
+        foreach(CardProspector tCP in tableau)
+        {
+            foreach(int hid in tCP.slotDef.hiddenBy)
+            {
+                cp = FindCardByLayoutID(hid);
+                tCP.hiddenBy.Add(cp);
+            }
+        }
+
         // Set up the inital target card
         MoveToTarget(Draw());
 
         // Set up the Draw pile
         UpdateDrawPile();
+    }
+
+    // Convert from the layoutID int to the CardProspector with that ID
+    CardProspector FindCardByLayoutID (int layoutID)
+    {
+        foreach(CardProspector tCP in tableau)
+        {
+            // Search through all cards in the tableau List<>
+            if(tCP.layoutID == layoutID)
+            {
+                // If the card has the same ID, return it
+                return tCP;
+            }
+        }
+
+        return null;
+    }
+
+    // This turns cards in the Mine face-up or face-down
+    void SetTableauFaces()
+    {
+        foreach(CardProspector cd in tableau)
+        {
+            bool faceUp = true; // Assume the card will be face-up
+            foreach(CardProspector cover in cd.hiddenBy)
+            {
+                if (cover.state == eCardState.tableau)
+                {
+                    faceUp = false;
+                }
+            }
+            cd.faceUp = faceUp;
+        }
     }
 
     // Moves the current target to the discardPile
@@ -202,8 +245,57 @@ public class Prospector : MonoBehaviour
                 // If we go here, then it's a valid card
                 tableau.Remove(cd); // Remove it from the tableau List
                 MoveToTarget(cd); // Make it the target card
+                SetTableauFaces(); // Update tableau card face-ups
                 break;
         }
+        // Check to see whether the game is over or not
+        CheckForGameOver();
+    }
+
+    // Test whether the game is over
+    void CheckForGameOver()
+    {
+        // If the tableau is empty, the game is over
+        if (tableau.Count == 0)
+        {
+            // Call GameOver() with a win
+            GameOver(true);
+            return;
+        }
+
+        // If there are still cards in the draw pile, the game's not over
+        if(drawPile.Count > 0)
+        {
+            return;
+        }
+
+        // Check for remaining valid plays
+        foreach(CardProspector cd in tableau)
+        {
+            if(AdjacentRank(cd,target))
+            {
+                // If there is a valid play, the game's not over
+                return;
+            }
+        }
+
+        // Since there are no valid plays, the game is over
+        // Call GameOver() with a loss
+        GameOver(false);
+    }
+
+    // Called when the game is over. Simple for now, but expandable.
+    void GameOver(bool won)
+    {
+        if(won)
+        {
+            print("Game Over. You won! :)");
+        } else
+        {
+            print("Game Over. You lost. :(");
+        }
+        // Reload the scene, resetting the game
+        SceneManager.LoadScene("ProspectorScene_0");
     }
 
     // Return true id the two cards are adjacent in rank (A & K wrap around)
