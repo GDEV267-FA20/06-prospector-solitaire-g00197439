@@ -42,13 +42,6 @@ public class Prospector : MonoBehaviour
         }
         Deck.Shuffle(ref deck.cards); // This shuffles the deck by reference
 
-        //Card c;
-        //for (int cNum = 0; cNum < deck.cards.Count; cNum++)
-        //{
-        //    c = deck.cards[cNum];
-        //    c.transform.localPosition = new Vector3((cNum % 13) * 3, cNum / 13 * 4, 0);
-        //}
-
         layout = GetComponent<Layout>();
         layout.ReadLayout(layoutXML.text);
         drawPile = ConvertListCardsToListCardProspectors(deck.cards);
@@ -71,7 +64,7 @@ public class Prospector : MonoBehaviour
     {
         CardProspector cd = drawPile[0]; // Pull the 0th CardProspector
         drawPile.RemoveAt(0); // Then remove it from List<> drawPile
-        return (cd); // And return it
+        return cd;
     }
 
     // LayoutGame() positions the initial tableau of cards, aka the "mine"
@@ -87,7 +80,7 @@ public class Prospector : MonoBehaviour
 
         CardProspector cp;
         // Follow the layout
-        foreach(SlotDef tSD in layout.slotDefs)
+        foreach (SlotDef tSD in layout.slotDefs)
         {
             cp = Draw(); // Pull a card from the top (beginning) of the draw Pile
             cp.faceUp = tSD.faceUp; // Set its faceUp to the value in SlotDef
@@ -106,13 +99,13 @@ public class Prospector : MonoBehaviour
             cp.SetSortingLayerName(tSD.layerName); // Set the sorting layers
 
             tableau.Add(cp); // Add this CardProspector to the List<> tableau
-
-            // Set up the inital target card
-            MoveToTarget(Draw());
-
-            // Set up the Draw pile
-            UpdateDrawPile();
         }
+
+        // Set up the inital target card
+        MoveToTarget(Draw());
+
+        // Set up the Draw pile
+        UpdateDrawPile();
     }
 
     // Moves the current target to the discardPile
@@ -198,7 +191,38 @@ public class Prospector : MonoBehaviour
 
             case eCardState.tableau:
                 // Clicking a card in the tableau will check if it's a valid play
+                bool validMatch = true;
+                if(!cd.faceUp)
+                {
+                    // If the card is face-down, it's not valid
+                    validMatch = false;
+                }
+                if (!validMatch) return; // return if not valid
+
+                // If we go here, then it's a valid card
+                tableau.Remove(cd); // Remove it from the tableau List
+                MoveToTarget(cd); // Make it the target card
                 break;
         }
+    }
+
+    // Return true id the two cards are adjacent in rank (A & K wrap around)
+    public bool AdjacentRank(CardProspector c0, CardProspector c1)
+    {
+        // If either card is face-down, it's not adjacent
+        if (!c0.faceUp || !c1.faceUp) return false;
+
+        // If they are 1 apart, they are adjacent
+        if(Mathf.Abs(c0.rank - c1.rank) == 1)
+        {
+            return true;
+        }
+
+        // If one is Ace and the other King, they are adjacent
+        if (c0.rank == 1 && c1.rank == 13) return true;
+        if (c0.rank == 13 && c1.rank == 1) return true;
+
+        // Otherwise, return false
+        return false;
     }
 }
