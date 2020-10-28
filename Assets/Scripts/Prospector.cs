@@ -19,6 +19,7 @@ public class Prospector : MonoBehaviour
     public Vector2 fsPosRun = new Vector2(0.5f, 0.75f);
     public Vector2 fsPosMid2 = new Vector2(0.4f, 1.0f);
     public Vector2 fsPosEnd = new Vector2(0.5f, 0.95f);
+    public float reloadDelay = 2f; // 2 sec delay bewteen rounds
 
     [Header("Set Dynamically")]
     public Deck deck;
@@ -312,7 +313,11 @@ public class Prospector : MonoBehaviour
             ScoreManager.EVENT(eScoreEvent.gameLoss);
             FloatingScoreHandler(eScoreEvent.gameLoss);
         }
-        // Reload the scene, resetting the game
+        Invoke("ReloadLevel", reloadDelay);
+    }
+
+    void ReloadLevel()
+    {
         SceneManager.LoadScene("ProspectorScene_0");
     }
 
