@@ -28,7 +28,13 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        S = this; // Set the private singleton
+        if (S == null)
+        {
+            S = this; // Set the private singleton
+        } else
+        {
+            Debug.LogError("ERROR: ScoreManager.Awake(): S is already set!");
+        }
 
         // Check for a high score in PlayerPrefs
         if (PlayerPrefs.HasKey("ProspectorHighScore"))
