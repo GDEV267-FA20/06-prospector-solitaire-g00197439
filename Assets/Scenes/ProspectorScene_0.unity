@@ -325,10 +325,10 @@ MonoBehaviour:
   suitHeart: {fileID: 21300000, guid: 3f3ffa8970b63467cad6ba98725b1c95, type: 3}
   suitSpade: {fileID: 21300000, guid: a7994da692eef4500be008b80674eecb, type: 3}
   altCardLayout: 0
-  altSuitClub: {fileID: 21300000, guid: 84126f0f23ed578419f72221c2da7e73, type: 3}
-  altSuitDiamond: {fileID: 21300000, guid: 039a2f3cf7b06554e9db0759e8cf7756, type: 3}
-  altSuitHeart: {fileID: 21300000, guid: 807fbc0563539e5439098794b39af266, type: 3}
-  altSuitSpade: {fileID: 21300000, guid: ac0853ba85758da45ae3ce0aa977fcff, type: 3}
+  altSuitClub: {fileID: 21300000, guid: d8815bbd92cc41b4bb861a1a2178824e, type: 3}
+  altSuitDiamond: {fileID: 21300000, guid: 06aa6ac6fa52d054ca3600321ea3eb04, type: 3}
+  altSuitHeart: {fileID: 21300000, guid: 51c60a5ead5d6354581aadb61fb9846e, type: 3}
+  altSuitSpade: {fileID: 21300000, guid: fd9f66ff78bcf8548b52c3d8dee75b66, type: 3}
   faceSprites:
   - {fileID: 21300000, guid: 0044ad2d99ea04858a663c3491cc9a91, type: 3}
   - {fileID: 21300000, guid: c10418368653749f796f63e87cde78ec, type: 3}
@@ -525,6 +525,9 @@ MonoBehaviour:
   fsPosMid2: {x: 0.4, y: 1}
   fsPosEnd: {x: 0.5, y: 0.95}
   reloadDelay: 2
+  gameOverText: {fileID: 0}
+  roundResultText: {fileID: 0}
+  highScoreText: {fileID: 0}
   deck: {fileID: 0}
   layout: {fileID: 0}
   drawPile: []

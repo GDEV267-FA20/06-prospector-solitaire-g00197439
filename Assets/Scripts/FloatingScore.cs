@@ -89,29 +89,31 @@ public class FloatingScore : MonoBehaviour
             text.enabled = false;
         } else
         {
-            if(u >= 1)
+            if (u >= 1)
             {
                 uC = 1;
                 state = eFSState.post;
-                if(reportFinishTo != null)
+                if (reportFinishTo != null)
                 {
                     reportFinishTo.SendMessage("FSCallback", this);
                     Destroy(gameObject);
-                } else
+                }
+                else
                 {
                     state = eFSState.idle;
                 }
-            } else
+            }
+            else
             {
                 state = eFSState.active;
                 text.enabled = true;
-                Vector2 pos = Utils.Bezier(uC, bezierPoints);
-                rectTrans.anchorMin = rectTrans.anchorMax = pos;
-                if(fontSizes != null && fontSizes.Count > 0)
-                {
-                    int size = Mathf.RoundToInt(Utils.Bezier(uC, fontSizes));
-                    GetComponent<Text>().fontSize = size;
-                }
+            }
+            Vector2 pos = Utils.Bezier(uC, bezierPoints);
+            rectTrans.anchorMin = rectTrans.anchorMax = pos;
+            if(fontSizes != null && fontSizes.Count > 0)
+            {
+                int size = Mathf.RoundToInt(Utils.Bezier(uC, fontSizes));
+                GetComponent<Text>().fontSize = size;
             }
         }
     }
